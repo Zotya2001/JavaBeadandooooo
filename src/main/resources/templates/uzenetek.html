@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Üzenetek</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Üzenetek</h1>
+<div th:if="${not #lists.isEmpty(uzenetek)}">
+    <table>
+        <tr>
+            <th>Időpont</th>
+            <th>Üzenet</th>
+            <th>Küldő</th>
+        </tr>
+        <tr th:each="uzenet : ${uzenetek}">
+            <td th:text="${uzenet.timestamp}">Időpont</td>
+            <td th:text="${uzenet.content}">Üzenet</td>
+            <td th:text="${uzenet.senderName}">Küldő</td>
+        </tr>
+    </table>
+</div>
+<div th:if="${#lists.isEmpty(uzenetek)}">
+    <p>Nincsenek üzenetek</p>
+</div>
+</body>
+</html>

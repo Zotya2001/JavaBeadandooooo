@@ -1,0 +1,36 @@
+<!-- szelereomu.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Helyszínek, megyék és tornyok</title>
+    <!-- További head elemek (pl. Bootstrap CSS link) -->
+</head>
+<body>
+<div th:insert="index"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Helyszínek</h2>
+            <ul>
+                <li th:each="helyszin : ${helyszinek}" th:text="${helyszin.nev}"></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Megyék</h2>
+            <ul>
+                <li th:each="megye : ${megyek}" th:text="${megye.nev}"></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Tornyok</h2>
+            <ul>
+                <!-- Itt módosítottuk a mezőneveket a Torony entitás mezőinek megfelelően -->
+                <li th:each="torony : ${tornyok}" th:text="|Darab: ${torony.darab}, Teljesítmény: ${torony.teljesitmeny}, Kezdés éve: ${torony.kezdev}|"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- További scriptek -->
+</body>
+</html>
